@@ -45,10 +45,16 @@ def main():
     print("PASS siete archivos de practica y sintaxis Python")
     ignored = ["composes-cloude-project/.env", "docker/neo4j/.env",
                "docker/mongodb/.env", "resultados/mongodb/ejecucion.txt"]
-    result = subprocess.run(["git", "-C", str(ROOT), "check-ignore", *ignored],
-                            capture_output=True, text=True)
-    assert result.returncode == 0 and len(result.stdout.splitlines()) == 4
+    if (ROOT / ".git").exists():
+        result = subprocess.run(["git", "-C", str(ROOT), "check-ignore", *ignored],
+                                capture_output=True, text=True)
+        assert result.returncode == 0 and len(result.stdout.splitlines()) == 4
+    else:
+        # El ZIP no incluye metadatos Git; comprobar las reglas distribuidas.
+        rules = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
+        assert ".env" in rules and "resultados/" in rules
     print("PASS entornos reales y resultados ignorados")
+
 
 
 if __name__ == "__main__":
