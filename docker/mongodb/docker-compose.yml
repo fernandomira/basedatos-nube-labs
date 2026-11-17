@@ -1,0 +1,40 @@
+name: composes-cloude-project
+
+services:
+  # Base de datos documental MongoDB Community Server
+  mongodb-cloud:
+    image: mongodb/mongodb-community-server:8.0-ubi8
+    container_name: campuscloud-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:?Definir usuario MongoDB}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:?Definir password MongoDB}
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - campuscloud_net
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          mongosh --quiet --host localhost --port 27017
+          --username "$${MONGO_INITDB_ROOT_USERNAME}"
+          --password "$${MONGO_INITDB_ROOT_PASSWORD}"
+          --authenticationDatabase admin
+          --eval 'if (db.adminCommand({ping:1}).ok !== 1) quit(1)'
+          > /dev/null 2>&1
+      interval: 15s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  mongodb-data:
+    name: ${MONGO_VOLUME}
+
+networks:
+  campuscloud_net:
+    external: true
+    name: ${DOCKER_NETWORK}

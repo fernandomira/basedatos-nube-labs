@@ -1,0 +1,13 @@
+-- Claves deterministas: INSERT es upsert; repetir no duplica filas.
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e001','2026-11-14T09:00:00Z','u2-ev01','u2-s001','consulta','Consulta de libro','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e001','2026-11-15T09:00:00Z','u2-ev02','u2-s002','acceso','Video de bases de datos','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e001','2026-11-16T09:00:00Z','u2-ev03','u2-s001','prestamo','Libro de NoSQL','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e001','2026-11-16T10:00:00Z','u2-ev04','u2-s002','entrega','Ejercicio documental','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e002','2026-11-14T09:00:00Z','u2-ev05','u2-s003','reserva','Equipo Linux','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e002','2026-11-15T09:00:00Z','u2-ev06','u2-s001','consulta','Revista digital','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e002','2026-11-16T09:00:00Z','u2-ev07','u2-s003','acceso','Practica Docker','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e002','2026-11-16T10:00:00Z','u2-ev08','u2-s001','devolucion','Libro de redes','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e003','2026-11-14T09:00:00Z','u2-ev09','u2-s002','acceso','Foro de redes','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e003','2026-11-15T09:00:00Z','u2-ev10','u2-s004','reserva','Tutoria academica','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e003','2026-11-16T09:00:00Z','u2-ev11','u2-s002','entrega','Ejercicio de grafos','registrado');
+INSERT INTO campuscloud_u2.eventos_por_estudiante (estudiante_id,fecha,evento_id,servicio_id,accion,detalle,estado) VALUES ('u2-e003','2026-11-16T10:00:00Z','u2-ev12','u2-s004','asistencia','Sesion con tutor','registrado');
