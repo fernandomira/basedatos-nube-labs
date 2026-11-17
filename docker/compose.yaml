@@ -1,0 +1,5 @@
+name: composes-cloude-project
+# Conserva una sola definicion y resuelve .env/rutas desde el proyecto original.
+include:
+  - path: ../composes-cloude-project/docker-compose.yml
+    project_directory: ../composes-cloude-project

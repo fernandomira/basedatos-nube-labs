@@ -1,0 +1,34 @@
+name: composes-cloude-project
+
+services:
+  # Base de datos de grafos Neo4j Community 5
+  neo4j-cloud:
+    image: neo4j:5-community
+    container_name: campuscloud-neo4j
+    restart: always
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH:?Definir NEO4J_AUTH}
+    ports:
+      - "${NEO4J_HTTP_PORT}:7474"
+      - "${NEO4J_BOLT_PORT}:7687"
+    volumes:
+      - neo4j-data:/data
+    networks:
+      - campuscloud_net
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'NEO4J_USERNAME="$${NEO4J_AUTH%%/*}" NEO4J_PASSWORD="$${NEO4J_AUTH#*/}" cypher-shell -a bolt://localhost:7687 "RETURN 1 AS ok" > /dev/null 2>&1'
+      interval: 15s
+      timeout: 10s
+      retries: 12
+      start_period: 60s
+
+volumes:
+  neo4j-data:
+    name: ${NEO4J_VOLUME}
+
+networks:
+  campuscloud_net:
+    external: true
+    name: ${DOCKER_NETWORK}

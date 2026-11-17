@@ -5,3 +5,15 @@
 
 # EXCEPTION: no ignorar el archivo .env.example
 !.env.example
+
+# Entrega limpia
+*.log
+__pycache__/
+*.py[cod]
+node_modules/
+coverage/
+resultados/
+unidad-ii/05-evidencias/
+*.pdf
+*.zip
+docker images/
